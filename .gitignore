@@ -19,3 +19,9 @@ frontend/coverage/
 .claude/
 .DS_Store
 Thumbs.db
+
+# Material pessoal de preparação para entrevista (não faz parte da entrega)
+docs-treinamento/
+interview-prep.html
+architecture-diagram.html
+django-react-fundamentos.html
