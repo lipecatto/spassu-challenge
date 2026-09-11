@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [h for h in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = os.environ.get('TIME_ZONE', 'America/Sao_Paulo')
 
@@ -123,6 +124,45 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Django Admin theme (django-jazzmin)
+
+JAZZMIN_SETTINGS = {
+    'site_title': 'Papelaria Admin',
+    'site_header': 'Papelaria',
+    'site_brand': 'Papelaria Comissões',
+    'welcome_sign': 'Bem-vindo ao painel da Papelaria',
+    'copyright': 'spassu-challenge',
+    'show_sidebar': True,
+    'navigation_expanded': True,
+    'icons': {
+        'auth.user': 'fas fa-user-shield',
+        'auth.Group': 'fas fa-users-cog',
+        'sales.Product': 'fas fa-box-open',
+        'sales.Client': 'fas fa-user',
+        'sales.Seller': 'fas fa-user-tie',
+        'sales.Sale': 'fas fa-receipt',
+        'sales.CommissionRule': 'fas fa-percentage',
+    },
+    'order_with_respect_to': ['sales', 'sales.Sale', 'sales.Product', 'sales.Client', 'sales.Seller', 'sales.CommissionRule'],
+    'related_modal_active': True,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    'navbar': 'navbar-dark',
+    'navbar_fixed': True,
+    'theme': 'flatly',
+    'dark_mode_theme': None,
+    'button_classes': {
+        'primary': 'btn-outline-primary',
+        'secondary': 'btn-outline-secondary',
+        'info': 'btn-info',
+        'warning': 'btn-warning',
+        'danger': 'btn-danger',
+        'success': 'btn-success',
+    },
+}
 
 
 # Django REST Framework

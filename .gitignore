@@ -21,7 +21,7 @@ frontend/coverage/
 Thumbs.db
 
 # Material pessoal de preparação para entrevista (não faz parte da entrega)
+# Qualquer .html solto na raiz do repo é um desses documentos de estudo —
+# frontend/index.html e frontend/public/*.html não são afetados (não estão na raiz).
 docs-treinamento/
-interview-prep.html
-architecture-diagram.html
-django-react-fundamentos.html
+/*.html

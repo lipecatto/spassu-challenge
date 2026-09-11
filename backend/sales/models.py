@@ -12,6 +12,8 @@ class Client(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Cliente'
+        verbose_name_plural = 'Clientes'
 
     def __str__(self):
         return self.name
@@ -24,6 +26,8 @@ class Seller(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Vendedor'
+        verbose_name_plural = 'Vendedores'
 
     def __str__(self):
         return self.name
@@ -42,6 +46,8 @@ class Product(models.Model):
 
     class Meta:
         ordering = ['code']
+        verbose_name = 'Produto'
+        verbose_name_plural = 'Produtos'
 
     def __str__(self):
         return f'{self.code} - {self.description}'
@@ -71,6 +77,8 @@ class CommissionRule(models.Model):
 
     class Meta:
         ordering = ['weekday']
+        verbose_name = 'Regra de Comissão'
+        verbose_name_plural = 'Regras de Comissão'
 
     def __str__(self):
         return f'{self.get_weekday_display()}: {self.min_percentage}% - {self.max_percentage}%'
@@ -87,6 +95,8 @@ class Sale(models.Model):
 
     class Meta:
         ordering = ['-date_time']
+        verbose_name = 'Venda'
+        verbose_name_plural = 'Vendas'
 
     def __str__(self):
         return f'NF {self.invoice_number}'
@@ -108,6 +118,10 @@ class SaleItem(models.Model):
     # deve mudar de valor se o cadastro do produto for alterado depois.
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)
     commission_percentage = models.DecimalField(max_digits=4, decimal_places=2)
+
+    class Meta:
+        verbose_name = 'Item da Venda'
+        verbose_name_plural = 'Itens da Venda'
 
     def save(self, *args, **kwargs):
         if self._state.adding:
