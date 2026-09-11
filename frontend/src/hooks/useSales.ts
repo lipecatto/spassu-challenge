@@ -9,11 +9,16 @@ export function useSales(params: ListSalesParams) {
   return useQuery({ queryKey: salesKey(params), queryFn: () => listSales(params) })
 }
 
+function invalidateSalesAndCommissions(queryClient: ReturnType<typeof useQueryClient>) {
+  queryClient.invalidateQueries({ queryKey: ['sales'] })
+  queryClient.invalidateQueries({ queryKey: ['commissions'] })
+}
+
 export function useCreateSale() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: (input: SaleInput) => createSale(input),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['sales'] }),
+    onSuccess: () => invalidateSalesAndCommissions(queryClient),
   })
 }
 
@@ -21,7 +26,7 @@ export function useUpdateSale() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: ({ id, input }: { id: number; input: SaleInput }) => updateSale(id, input),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['sales'] }),
+    onSuccess: () => invalidateSalesAndCommissions(queryClient),
   })
 }
 
@@ -29,6 +34,6 @@ export function useDeleteSale() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: (id: number) => deleteSale(id),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['sales'] }),
+    onSuccess: () => invalidateSalesAndCommissions(queryClient),
   })
 }
