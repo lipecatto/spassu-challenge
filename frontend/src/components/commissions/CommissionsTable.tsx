@@ -10,6 +10,7 @@ import {
   Typography,
 } from '@mui/material'
 
+import { EmptyTableRow } from '../common/EmptyTableRow'
 import type { CommissionReport } from '../../types'
 import { formatCurrency } from '../../utils/format'
 
@@ -32,11 +33,7 @@ export function CommissionsTable({ report }: { report: CommissionReport }) {
               </TableRow>
             ))}
             {report.sellers.length === 0 && (
-              <TableRow>
-                <TableCell colSpan={2} align="center" sx={{ py: 4, color: 'text.secondary' }}>
-                  Nenhuma venda no período selecionado.
-                </TableCell>
-              </TableRow>
+              <EmptyTableRow colSpan={2} message="Nenhuma venda no período selecionado." />
             )}
           </TableBody>
           <TableFooter>

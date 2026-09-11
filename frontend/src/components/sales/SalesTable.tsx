@@ -12,6 +12,7 @@ import {
   Paper,
 } from '@mui/material'
 
+import { EmptyTableRow } from '../common/EmptyTableRow'
 import type { Sale } from '../../types'
 import { formatCurrency, formatDateTime } from '../../utils/format'
 
@@ -58,13 +59,7 @@ export function SalesTable({ sales, count, page, pageSize, onPageChange, onEdit,
                 </TableCell>
               </TableRow>
             ))}
-            {sales.length === 0 && (
-              <TableRow>
-                <TableCell colSpan={6} align="center" sx={{ py: 4, color: 'text.secondary' }}>
-                  Nenhuma venda registrada.
-                </TableCell>
-              </TableRow>
-            )}
+            {sales.length === 0 && <EmptyTableRow colSpan={6} message="Nenhuma venda registrada." />}
           </TableBody>
         </Table>
       </TableContainer>
